@@ -1,4 +1,15 @@
 {
+    "files.eol": "\n",
+    "files.encoding": "utf8",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/.vscode": true,
+        "**/node_module": true
+    },
     "eslint.workingDirectories": ["./src/js"],
     "beautify.ignore": [
         "js/*.js",
