@@ -1,0 +1,11 @@
+{
+    "eslint.workingDirectories": ["./src/js"],
+    "beautify.ignore": [
+        "js/*.js",
+        "css/*.css",
+        "lay/*.js",
+        "lay/*.css",
+        "lay/**/*.css",
+        "lay/**/*.js"
+    ]
+}
