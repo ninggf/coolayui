@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hello World</title>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- @if env='pro' -->
+    <link rel="stylesheet" href="../css/app.css">
+    <!-- @endif -->
+    <!-- @if env='dev' -->
+    <link rel="stylesheet" href="../css/app.dev.css">
+    <!-- @endif -->
+</head>
+
+<body>
+    <h1>Hello World</h1>
+    <!-- @if env='pro' -->
+    <script type="text/javascript" src="../js/index.js"></script>
+    <!-- @endif -->
+    <!-- @if env='dev' -->
+    <script type="text/javascript" src="../js/index.dev.js"></script>
+    <!-- @endif -->
+</body>
+
+</html>

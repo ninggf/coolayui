@@ -1,0 +1,21 @@
+{
+    "name": "wula/coolay",
+    "description": "an admin UI based on layui",
+    "type": "wula-asset",
+    "require": {
+        "wula/wula-installer": "^2.0"
+    },
+    "keywords": [
+        "admin",
+        "layui",
+        "backend",
+        "dashboard",
+        "controll-panel",
+        "ui"
+    ],
+    "license": "MIT",
+    "authors": [{
+        "name": "ningGf",
+        "email": "windywany@gmail.com"
+    }]
+}
