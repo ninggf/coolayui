@@ -1,7 +1,6 @@
 logs
 *.log
 npm-debug.log*
-*-lock.json
 *.dev.*
 .npm
 .eslintcache
