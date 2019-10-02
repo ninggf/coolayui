@@ -1,2 +1,5 @@
 /js
+/lay
+/layui
+*.dev.js
 gulpfile.js

@@ -9,9 +9,3 @@ npm-debug.log*
 .env
 /vendor/
 node_modules/
-layui.js
-/css/
-/font/
-/demo/
-/lay/
-/images/

@@ -58,6 +58,11 @@ const cmt = '/** <%= pkg.name %>-v<%= pkg.version %> <%= pkg.license %> License 
 
             let gp = src(srcx)
 
+            if (options.env != 'pro')
+                gp = gp.pipe(rename({
+                    suffix: '.dev'
+                }))
+
             if (options.env == 'pro')
                 gp = gp.pipe(uglify())
 
@@ -76,6 +81,11 @@ const cmt = '/** <%= pkg.name %>-v<%= pkg.version %> <%= pkg.license %> License 
             ]
 
             let gp = src(srcx)
+
+            if (options.env != 'pro')
+                gp = gp.pipe(rename({
+                    suffix: '.dev'
+                }))
 
             if (options.env == 'pro')
                 gp = gp.pipe(cleancss())
@@ -107,8 +117,8 @@ const cmt = '/** <%= pkg.name %>-v<%= pkg.version %> <%= pkg.license %> License 
     }
 
 const cleanTask = cb => {
-    src(['./lay/*', './css/*', './demo/*', './font/*', './images/*', './layui.js'], {
-        read: false,
+    src(['lay/*', 'css/*', 'demo/*', 'font/*', 'images/*', 'layui.js', 'layui.dev.js'], {
+        read: true,
         allowEmpty: true
     }).pipe(clean())
 
@@ -175,7 +185,7 @@ const buildJs = cb => {
             console.error(e.message)
         }).pipe(header.apply(null, note))
 
-    gp = gp.pipe(dest('lay/plugins'))
+    gp = gp.pipe(dest('lay/exts'))
 
     if (options.watch)
         gp.pipe(connect.reload());
@@ -184,7 +194,7 @@ const buildJs = cb => {
 }
 
 const buildHtml = cb => {
-    let gp = src(['src/html/*.html', 'src/html/**/*.html']).pipe(preprocess({
+    let gp = src(['src/html/**/*.{html,js}']).pipe(preprocess({
         context: options
     })).on('error', e => {
         console.error(e.message)
@@ -223,10 +233,10 @@ const watching = cb => {
 
     options.watch = true
 
-    watch(['src/html/**/*.html'], buildHtml)
+    watch(['src/html/**/*.{html,js}'], buildHtml)
     watch(['src/js/**/*.js'], buildJs)
     watch(['src/less/**/*.less'], buildCss)
-    watch(['src/**/*.{png,jpg,gif,html,mp3,json,eot,svg,ttf,woff,woff2}'], mvAssets)
+    watch(['src/**/*.{png,jpg,gif,mp3,json,eot,svg,ttf,woff,woff2}'], mvAssets)
 
     if (fs.existsSync('layui/')) {
         watch(['layui/src/**/*.js'], layuiTasks.minjs)
@@ -251,8 +261,9 @@ exports.default = series(cb => {
     options.env = 'pro'
     cb()
 }, exports.build, cb => {
-    src(['lay/**/**.dev.js', 'css/**/*.dev.css'], {
-        read: false
+    src(['lay/**/*.dev.js', 'demo/**/*.dev.js', 'css/**/*.dev.css', 'layui.dev.js'], {
+        read: true,
+        allowEmpty: true
     }).pipe(clean())
 
     cb()
