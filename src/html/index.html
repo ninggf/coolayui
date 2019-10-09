@@ -29,12 +29,14 @@
     <script type="text/javascript">
         layui.config({
             devMode: "<!-- @if env='dev' -->1<!-- @endif -->",
-            base: '/demo/',
+            base: '/demo/js/',
+            module: '/demo/',
             theme: '/demo/t/'
-        }).use(['layer', '&coolay','@app.home','$default.home'], function(layer, coolay,ah,dh) {
-            layer.msg('ok')
+        }).use(['layer', '&coolay','@app.home','$default.home','a/test'], function(layer, coolay,ah,dh,t) {
+            layer.msg('ok');
             ah();
             dh();
+            t();
         });
     </script>
 </body>

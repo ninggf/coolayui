@@ -22,6 +22,7 @@ const rename = require('gulp-rename')
 const cleancss = require('gulp-clean-css')
 const clean = require('gulp-rimraf')
 const uglify = require('gulp-uglify')
+const relogger = require('gulp-remove-logging')
 const validate = require('gulp-jsvalidate')
 const notify = require('gulp-notify')
 const header = require('gulp-header')
@@ -180,7 +181,9 @@ const buildJs = cb => {
         gp = gp.pipe(sourcemap.write())
 
     if (options.env == 'pro')
-        gp = gp.pipe(uglify()).on('error', (e) => {
+        gp = gp.pipe(relogger({
+            replaceWith: 'void 0'
+        })).pipe(uglify()).on('error', (e) => {
             notify.onError(e.message)
             console.error(e.message)
         }).pipe(header.apply(null, note))
