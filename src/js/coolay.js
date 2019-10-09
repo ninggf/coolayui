@@ -17,5 +17,5 @@ layui.define(['jquery'], (exports) => {
         console.log('coolayui inited');
     });
 
-    exports('ext.coolay', Coolay);
+    exports('&coolay', Coolay);
 });

@@ -30,8 +30,11 @@
         layui.config({
             devMode: "<!-- @if env='dev' -->1<!-- @endif -->",
             base: '/demo/',
-        }).use(['layer', 'ext.coolay'], function(layer, coolay) {
+            theme: '/demo/t/'
+        }).use(['layer', '&coolay','@app.home','$default.home'], function(layer, coolay,ah,dh) {
             layer.msg('ok')
+            ah();
+            dh();
         });
     </script>
 </body>
