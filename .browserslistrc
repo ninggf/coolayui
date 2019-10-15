@@ -3,8 +3,8 @@
 > 0.5%
 not dead
 edge >= 15
-chrome >= 60
+chrome >= 63
 firefox esr
-ie >= 10
+ie >= 9
 iOS >= 9
 Android >= 4.1
