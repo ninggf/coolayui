@@ -25,6 +25,7 @@ before_deploy:
   - echo "/src" >> notar.txt
   - echo "/layui" >> notar.txt
   - tar -czf coolay-${TRAVIS_TAG}.tar.gz -X notar.txt ./*
+  - zip coolay-${TRAVIS_TAG}.zip -x notar.txt ./*
 
 deploy:
   provider: releases
