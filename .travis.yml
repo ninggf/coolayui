@@ -5,9 +5,6 @@ if: tag IS present
 node_js:
   - node
 
-install:
-  - cd layui && git pull
-
 script:
   - npm install
   - npx gulp
