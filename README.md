@@ -39,8 +39,11 @@ layui.use(['layer','&coolay','@app.module','$default.mod','third'],function(){
 
 ## 参与开发
 
+`node version: 12.12`
+
 1. `git clone https://github.com/ninggf/coolayui.git`
-2. `npm install`
-3. `gulp watch`
+2. `cd coolayui && git submodule update --init --recursive`
+3. `npm ci`
+4. `gulp watch`
 
 > 欢迎提交`pr`或`issue`。
