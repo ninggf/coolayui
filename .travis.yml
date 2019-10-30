@@ -3,37 +3,29 @@ language: node_js
 if: tag IS present
 
 node_js:
-  - node
+  - "12.12"
+
+cache:
+  npm: false
 
 script:
-  - npm install
   - npx gulp
 
 before_deploy:
-  - echo ".git" >> notar.txt
-  - echo ".gitattributes" >> notar.txt
-  - echo ".gitattributes" >> notar.txt
-  - echo "*.log" >> notar.txt
-  - echo ".travis.yml" >> notar.txt
-  - echo "*.dev.js" >> notar.txt
-  - echo "*.dev.css" >> notar.txt
-  - echo ".*" >> notar.txt
-  - echo "notar.txt" >> notar.txt
-  - echo "composer.json" >> notar.txt
-  - echo "gulpfile.js" >> notar.txt
-  - echo "package*.json" >> notar.txt
-  - echo "/src" >> notar.txt
-  - echo "/layui" >> notar.txt
-  - tar -czf coolay-${TRAVIS_TAG}.tar.gz -X notar.txt ./*
-  - zip coolay-${TRAVIS_TAG}.zip -x notar.txt ./*
+  - rm -rf .* src layui package*.json node_modules gulpfile.js composer.json
+  - tar -czf coolay-${TRAVIS_TAG}.tar.gz ./*
+  - zip coolay-${TRAVIS_TAG}.zip ./*
 
 deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
-  file: coolay-${TRAVIS_TAG}.tar.gz
+  file:
+    - coolay-${TRAVIS_TAG}.tar.gz
+    - coolay-${TRAVIS_TAG}.zip
   skip_cleanup: true
+  overwrite: true
   on:
     tags: true
     branch: master
     repo: ninggf/coolayui
-    node_js: node
+    node_js: "12"
