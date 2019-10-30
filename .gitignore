@@ -9,3 +9,4 @@ npm-debug.log*
 .env
 /vendor/
 node_modules/
+/demo/
