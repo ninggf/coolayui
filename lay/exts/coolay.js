@@ -1,2 +1,2 @@
 /** coolay-v1.0.0 MIT License By https://github.com/ninggf/coolayui */
- ;layui.define(["jquery"],function(n){"use strict";function u(n,i){}var o=layui.$;o.fn.coolay=function(n){var i=o(this);return new u(i,n),i},o(function(){}),n("&coolay",u)});
+ ;layui.define(["jquery"],function(n){"use strict";function u(n,i){}var o=layui.$;o.fn.coolay=function(n){var i=o(this);return new u(i,n),i},n("&coolay",u)});

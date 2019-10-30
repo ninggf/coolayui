@@ -13,9 +13,7 @@ layui.define(['jquery'], (exports) => {
         return that;
     };
 
-    $(() => {
-        console.log('coolayui inited');
-    });
+    console.log('coolayui inited');
 
     exports('&coolay', Coolay);
 });

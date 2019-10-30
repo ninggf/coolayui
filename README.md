@@ -48,6 +48,6 @@ layui.use(['layer','&coolay','@app.module','$default.mod','third'],function(){
 1. `git clone https://github.com/ninggf/coolayui.git`
 2. `cd coolayui && git submodule update --init --recursive`
 3. `npm ci`
-4. `gulp watch`
+4. `npx gulp watch`
 
 > 欢迎提交`pr`或`issue`。

@@ -12,7 +12,7 @@ script:
   - npx gulp
 
 before_deploy:
-  - rm -rf .b* .e* .g* .j* .t* .v*
+  - rm -rf .b* .e* .g* .j* .t* .v* .D*
   - rm -rf src layui package*.json node_modules gulpfile.js composer.json README.md bootstrap.php
   - zip -r coolay-${TRAVIS_TAG}.zip ./*
   - tar -czf coolay-${TRAVIS_TAG}.tar.gz --exclude *.zip ./*
