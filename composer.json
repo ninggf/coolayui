@@ -17,5 +17,10 @@
     "authors": [{
         "name": "ningGf",
         "email": "windywany@gmail.com"
-    }]
+    }],
+    "autoload": {
+        "files": [
+            "bootstrap.php"
+        ]
+    }
 }

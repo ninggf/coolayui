@@ -9,6 +9,10 @@
 1. layui[文档](https://www.layui.com/doc/)
 2. coolay[文档](https://coolay.wulaphp.com/)
 
+### composer
+
+`composer require wula/coolay`
+
 ## 配置
 
 相比layui，coolay扩展了三个配置: `devMode`, `module`和`theme`：
