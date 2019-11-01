@@ -1,19 +1,33 @@
-layui.define(['jquery'], (exports) => {
+layui.define(['jquery', 'element'], (exports) => {
     'use strict';
 
     const $ = layui.$;
+    const bodyE = $('body').addClass('loaded');
+    const overlayE = $('#cl-overlay');
 
-    const Coolay = (elem, opts) => {
+    const Coolay = function() {};
 
+    Coolay.prototype.overlay = (op) => {
+        op == 'show' ? overlayE.addClass('show') : overlayE.removeClass('show');
     };
 
-    $.fn.coolay = function(opts) {
-        const that = $(this);
-        new Coolay(that, opts);
-        return that;
-    };
+    const _coolay = new Coolay();
+    window.Coolayui = _coolay;
 
-    console.log('coolayui inited');
+    bodyE.on('click', '#cl-overlay', () => {
+        bodyE.removeClass('opened');
+        overlayE.removeClass('show');
+    }).on('mouseenter', '.cl-sidebar', () => {
+        if (bodyE.hasClass('sidebar-folded') && !bodyE.hasClass('opened')) {
+            console.log('mouse enter sidebar');
+            bodyE.addClass('opened');
+        }
+    }).on('mouseleave', '.cl-sidebar', () => {
+        if (bodyE.hasClass('sidebar-folded')) {
+            console.log('mouse leave sidebar');
+            bodyE.removeClass('opened');
+        }
+    });
 
-    exports('&coolay', Coolay);
+    exports('&coolay', _coolay);
 });

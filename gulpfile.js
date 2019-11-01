@@ -127,7 +127,7 @@ const cleanTask = cb => {
 }
 
 const buildCss = cb => {
-    let gp = src(['src/less/*.less'])
+    let gp = src(['src/less/[^_]*.less'])
 
     if (options.env != 'pro') {
         gp = gp.pipe(sourcemap.init()).pipe(identityMap()).pipe(rename({
@@ -203,8 +203,9 @@ const buildHtml = cb => {
         console.error(e.message)
     }).pipe(dest('demo'))
 
-    if (options.watch)
+    if (options.watch){
         gp.pipe(connect.reload());
+    }
 
     cb()
 }
@@ -236,7 +237,7 @@ const watching = cb => {
 
     options.watch = true
 
-    watch(['src/html/**/*.{html,js}'], buildHtml)
+    watch(['src/html/**/*.{html,js,htm}'], buildHtml)
     watch(['src/js/**/*.js'], buildJs)
     watch(['src/less/**/*.less'], buildCss)
     watch(['src/**/*.{png,jpg,gif,mp3,json,eot,svg,ttf,woff,woff2}'], mvAssets)
@@ -263,13 +264,6 @@ exports.buildLayui = buildLayui
 exports.default = series(cb => {
     options.env = 'pro'
     cb()
-}, exports.build, cb => {
-    src(['lay/**/*.dev.js', 'demo/**/*.dev.js', 'css/**/*.dev.css', 'layui.dev.js'], {
-        read: true,
-        allowEmpty: true
-    }).pipe(clean())
-
-    cb()
-});
+}, exports.build);
 
 exports.watch = series(exports.build, watching)
